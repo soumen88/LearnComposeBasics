@@ -25,6 +25,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import com.learn.compose.basics.R
+import com.learn.compose.basics.common.DisplayTopBar
 
 @Composable
 fun HomeScreen(
@@ -39,8 +40,13 @@ fun HomeScreen(
         R.drawable.page_two,
         R.drawable.page_three,
     )
-    //val paddingValues = WindowInsets.navigationBars.asPaddingValues()
+    val paddingValues = WindowInsets.navigationBars.asPaddingValues()
     Scaffold(
+        topBar = {
+            DisplayTopBar(
+                screenName = "Home Screen",
+            )
+        },
         content = { paddingValues ->
             Column(
                 modifier = Modifier.padding(paddingValues)
@@ -61,8 +67,8 @@ fun HomeScreen(
         },
         bottomBar = {
             Row(
-                modifier = Modifier.fillMaxWidth(),
-                    //.padding(paddingValues),
+                modifier = Modifier.fillMaxWidth()
+                    .padding(paddingValues),
                 horizontalArrangement = Arrangement.Center,
             ) {
                 repeat(allPagesCount){ iteration ->
