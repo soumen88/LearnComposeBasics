@@ -57,11 +57,20 @@ fun HomeScreen(
                 Text(
                     "Home screen is displayed - \n $dataReceivedFromSplash"
                 )
-                HorizontalPager(state = pagerState) {
-                    Image(
-                        painter = painterResource( imagesList[pagerState.currentPage]),
-                        contentDescription = null
-                    )
+                HorizontalPager(
+                    state = pagerState,
+
+                ) {
+                    Box(
+                        modifier = Modifier.fillMaxWidth(),
+                        contentAlignment = Alignment.Center
+                    ){
+                        Image(
+                            painter = painterResource( imagesList[pagerState.currentPage]),
+                            contentDescription = null
+                        )
+                    }
+
                 }
             }
         },

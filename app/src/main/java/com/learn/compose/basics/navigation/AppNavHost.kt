@@ -9,13 +9,14 @@ import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
 import com.learn.compose.basics.home.HomeScreen
 import com.learn.compose.basics.splash.SplashScreen
+import com.learn.compose.basics.tabs.TabScreen
 
 class AppNavHost {
 
     @Composable
     fun SetupAppNavHost(
         hostController : NavHostController,
-        startDestinationScreen : String = ScreenEnums.SplashScreen.name
+        startDestinationScreen : String = ScreenEnums.TabsScreen.name
     ){
         NavHost(
             navController =  hostController,
@@ -26,6 +27,10 @@ class AppNavHost {
                 navGraphBuilder = this
             )
             DisplayHomeScreen(
+                hostController = hostController,
+                navGraphBuilder = this
+            )
+            DisplayTabsScreen(
                 hostController = hostController,
                 navGraphBuilder = this
             )
@@ -59,6 +64,17 @@ class AppNavHost {
         ){ backStackEntry->
             val dataReceived = backStackEntry.arguments?.getString("dataToBeShared").orEmpty()
             HomeScreen(dataReceivedFromSplash = dataReceived)
+        }
+    }
+
+    fun DisplayTabsScreen(
+        hostController : NavHostController,
+        navGraphBuilder : NavGraphBuilder
+    ){
+        navGraphBuilder.composable(
+            route = ScreenEnums.TabsScreen.name,
+        ){ backStackEntry->
+            TabScreen()
         }
     }
 }
