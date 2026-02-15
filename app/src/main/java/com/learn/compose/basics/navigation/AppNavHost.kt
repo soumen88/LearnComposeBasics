@@ -60,5 +60,6 @@ class AppNavHost {
             val dataReceived = backStackEntry.arguments?.getString("dataToBeShared").orEmpty()
             HomeScreen(dataReceivedFromSplash = dataReceived)
         }
+
     }
 }
